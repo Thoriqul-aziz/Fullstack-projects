@@ -6,12 +6,17 @@ const App = () => {
 
   const addPersons = (event) => {
     event.preventDefault();
-    const add = {
-      name: newName,
-    };
+    const exist = persons.find((person) => person.name === newName);
+    if (exist) {
+      alert(`${newName} is already added to phonebook`);
+    } else {
+      const add = {
+        name: newName,
+      };
 
-    setPersons(persons.concat(add));
-    setNewName("");
+      setPersons(persons.concat(add));
+      setNewName("");
+    }
   };
   const handleClick = (event) => {
     console.log(event.target.value);
